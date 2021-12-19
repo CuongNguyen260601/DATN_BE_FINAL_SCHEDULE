@@ -2,6 +2,7 @@ package com.localbrand.service.impl;
 
 import com.localbrand.dto.MailMessageDTO;
 import com.localbrand.dto.response.statistical.SummaryStatusBillDTO;
+import com.localbrand.dto.response.statistical.SummaryStatusBillDTO2;
 import com.localbrand.entity.User;
 import com.localbrand.entity.Voucher;
 import com.localbrand.service.MailService;
@@ -77,11 +78,11 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public String sendEmailBillByDate(List<SummaryStatusBillDTO> list11) {
+    public String sendEmailBillByDate(List<SummaryStatusBillDTO2> list11) {
 
         this.log.info("send email report by date");
 
-        List<SummaryStatusBillDTO> lisTSendMail = new ArrayList<>();
+        List<SummaryStatusBillDTO2> lisTSendMail = new ArrayList<>();
         list11.forEach(summaryStatusBillDTO -> {
             if(summaryStatusBillDTO.getTotalBill() > 0){
                 lisTSendMail.add(summaryStatusBillDTO);

@@ -1,6 +1,7 @@
 package com.localbrand.schedule;
 
 import com.localbrand.dto.response.statistical.SummaryStatusBillDTO;
+import com.localbrand.dto.response.statistical.SummaryStatusBillDTO2;
 import com.localbrand.schedule.base.BaseSchedule;
 import com.localbrand.service.MailService;
 import com.localbrand.service.StatisticalService;
@@ -15,18 +16,18 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ReportSchedule extends BaseSchedule<SummaryStatusBillDTO> {
+public class ReportSchedule extends BaseSchedule<SummaryStatusBillDTO2> {
 
     private final MailService mailService;
     private final StatisticalService statisticalService;
     @Override
-    @Scheduled(cron = "0 */5 * * * ?")
+    @Scheduled(cron = "0 */60 * * * ?")
     public void execute() {
         super.baseExecute();
     }
 
     @Override
-    protected void processItems(List<SummaryStatusBillDTO> scheduleItems) {
+    protected void processItems(List<SummaryStatusBillDTO2> scheduleItems) {
         mailService.sendEmailBillByDate(scheduleItems);
     }
 
@@ -36,7 +37,7 @@ public class ReportSchedule extends BaseSchedule<SummaryStatusBillDTO> {
     }
 
     @Override
-    protected List<SummaryStatusBillDTO> fetchScheduleItem() {
+    protected List<SummaryStatusBillDTO2> fetchScheduleItem() {
         Integer date = new Date().getDay();
         Integer month = new Date().getMonth();
         Integer year = new Date().getYear();

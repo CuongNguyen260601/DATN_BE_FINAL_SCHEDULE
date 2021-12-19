@@ -110,13 +110,13 @@ public class StatisticalServiceImpl implements StatisticalService {
     }
 
     @Override
-    public ServiceResult<List<SummaryStatusBillDTO>> findByDate(Integer date, Integer month, Integer year){
+    public ServiceResult<List<SummaryStatusBillDTO2>> findByDate(Integer date, Integer month, Integer year){
         EntityManager em = emf.createEntityManager();
 
-        Query queryStatus = em.createQuery("select new SummaryStatusBillDTO(b.idStatus,  s.nameStatus, count(b.idBill)) " +
+        Query queryStatus = em.createQuery("select new SummaryStatusBillDTO2(b.idStatus,  s.nameStatus, count(b.idBill), count(b.total)) " +
                 "from Bill b join Status s on b.idStatus = s.idStatus " +
                 "where day(b.dateCreate) = :date and month(b.dateCreate) = :month and year(b.dateCreate) = :year " +
-                "group by b.idStatus,s.nameStatus",  SummaryStatusBillDTO.class);
+                "group by b.idStatus,s.nameStatus",  SummaryStatusBillDTO2.class);
         queryStatus.setParameter("date", date);
         queryStatus.setParameter("month", month);
         queryStatus.setParameter("year", year);

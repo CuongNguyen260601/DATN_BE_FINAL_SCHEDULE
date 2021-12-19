@@ -2,6 +2,7 @@ package com.localbrand.service;
 
 import com.localbrand.dto.MailMessageDTO;
 import com.localbrand.dto.response.statistical.SummaryStatusBillDTO;
+import com.localbrand.dto.response.statistical.SummaryStatusBillDTO2;
 import com.localbrand.entity.User;
 import com.localbrand.entity.Voucher;
 
@@ -17,5 +18,5 @@ public interface MailService {
 
     String sendEmail(MailMessageDTO mailMessageDTO) throws MessagingException, IOException;
 
-    String sendEmailBillByDate(List<SummaryStatusBillDTO> list11);
+    String sendEmailBillByDate(List<SummaryStatusBillDTO2> list11);
 }
