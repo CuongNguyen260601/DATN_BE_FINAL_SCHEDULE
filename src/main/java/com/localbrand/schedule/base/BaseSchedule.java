@@ -43,7 +43,6 @@ public abstract class BaseSchedule<T>{
 
             if(proccessingItems < 1){
                 lastScannedId = 0L;
-                return;
             }
 
             this.processItems(scheduleItems);
